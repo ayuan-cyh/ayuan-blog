@@ -1,19 +1,18 @@
-# client
-
-## Project setup
+# 阿源博客项目
+项目使用了前后端分离的架构,这个项目仅仅为前台项目,后台项目提交到了另一个参数地址,
+生成环境中
+## 1.下载依赖
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 2.启动项目(注)
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 3.打包项目
 ```
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
