@@ -21,7 +21,6 @@ export default {
         _id: this.$route.params.id
       }
     })
-    console.log(data);
 
     if (data.code) {
       return this.$message.error("文章id错误，查询失败")

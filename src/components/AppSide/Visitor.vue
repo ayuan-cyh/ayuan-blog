@@ -1,38 +1,38 @@
 <template>
-<div class="visitor">
-  <h4>最近访客</h4>
-  <ul>
-    <li
-        v-for="(item,index) in visitorList" :key="index"
-        :style="
+  <div class="visitor">
+    <h4>最近访客</h4>
+    <ul>
+      <li
+          v-for="(item,index) in visitorList" :key="index"
+          :style="
         { backgroundImage: `url(${baseURL}${item.visitor.photo})`}
 "
-    >
-    <p>{{item.visitor.user}}</p>
-    </li>
-  </ul>
-</div>
+      >
+        <p>{{ item.visitor.user }}</p>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
+import {mapState,mapActions} from "vuex"
 export default {
   name: "Visitor",
-  data(){
-    return{
-      visitorList:[]
+  data() {
+    return {
     }
   },
-   async created() {
-    let {data}=await this.$axios({
-      method:"get",
-      url:"/visitor"
-    })
-     if (data.code){
-       return this.$message.error("访客查询失败")
-
-     }
-     this.visitorList=data.data
+  computed:{
+    ...mapState(['visitorList'])
+  },
+  methods: {
+    ...mapActions(['getVisitorList'])
+  },
+  created() {
+    this.getVisitorList()
+    console.log(this.visitorList)
   }
+
 }
 </script>
 
@@ -45,6 +45,7 @@ export default {
   margin-top: 15px;
   box-shadow: 0 0 4px #ddd;
   padding: 20px;
+
 
   h4 {
     line-height: 20px;

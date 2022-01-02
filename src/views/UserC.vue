@@ -59,13 +59,22 @@
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-tab-pane>
+        <el-tab-pane label="退出登录" name="four">
+          <el-button
+              class="second"
+              type="danger"
+              size="mini"
+              @click="logout"
+          >退出登录
+          </el-button>
+        </el-tab-pane>
       </el-tabs>
     </article>
   </div>
 </template>
 
 <script>
-import {mapState, mapMutations} from 'vuex'
+import {mapState, mapMutations, mapActions} from 'vuex'
 
 export default {
   name: "User",
@@ -118,7 +127,7 @@ export default {
           trigger: 'blur'
         }]
       },
-      imageUrl:""
+      imageUrl: ""
     }
   },
   computed: {
@@ -126,6 +135,7 @@ export default {
   },
   methods: {
     ...mapMutations(['updateUserName', "updateUserInfo"]),
+    ...mapActions(['getVisitorList']),
     //修改用户名
     userNameUpdate() {
       this.$refs.userForm.validate(async v => {
@@ -143,8 +153,12 @@ export default {
           }
 
           this.$message.success("修改成功")
+          //更新vuex中的数据
           this.updateUserName(this.userForm.user)
           this.userForm.user = ""
+          //  刷新访客数据
+          this.getVisitorList()
+          await this.logout()
 
         } else {
           return false
@@ -183,22 +197,24 @@ export default {
 
     },
     // 头像成功回调
-    handleAvatarSuccess(res,file){
-      this.imageUrl=URL.createObjectURL(file.raw)
+    handleAvatarSuccess(res, file) {
+      this.imageUrl = URL.createObjectURL(file.raw)
 
       //如果上传失败的提示
-      if (res.code){
+      if (res.code) {
         return this.$message.error(res.msg)
       }
-    //  如果上传成功
-    //   提示
+      //  如果上传成功
+      //   提示
       this.$message.success("头像修改成功")
       // 更新vuex中的数据
       this.updateUserInfo(res.data)
+      //  更新浏览记录数据
+      this.getVisitorList()
     },
 
-  //  上传之前的回调函数
-    beforeAvatarUpload(file){
+    //  上传之前的回调函数
+    beforeAvatarUpload(file) {
       let fileType = file.type
       const isLt2M = file.size / 1024 / 1024 < 2;
       const isJPG = /^image\/(jpeg|png)$/.test(fileType)
@@ -210,7 +226,19 @@ export default {
         this.$message.error('上传头像图片大小不能超过 2MB!');
       }
       return isJPG && isLt2M;
-    }
+    },
+    //退出登录的事件
+    async logout() {
+      await this.$axios({
+        method: "post",
+        url: "/login/logout"
+      })
+      this.$message.success("退出登录成功")
+      // 清除vuex中的数据
+      this.updateUserInfo({})
+      // 返回首页
+      await this.$router.push({name: 'Home'})
+    },
 
   },
   //在页面创建时进行检测如果页面中不含有数据路由地址变成/
@@ -243,6 +271,7 @@ export default {
       text-indent: 10px;
     }
   }
+
   /deep/ .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;
@@ -251,9 +280,11 @@ export default {
     overflow: hidden;
     margin-top: 10px;
   }
+
   /deep/ .avatar-uploader .el-upload:hover {
     border-color: #409EFF;
   }
+
   /deep/ .avatar-uploader-icon {
     font-size: 28px;
     color: #8c939d;
@@ -262,6 +293,7 @@ export default {
     line-height: 178px;
     text-align: center;
   }
+
   /deep/ .avatar {
     width: 178px;
     height: 178px;

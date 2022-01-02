@@ -136,6 +136,7 @@ export default {
 
       })
     },
+    // 登录账号事件
     loginSubmit() {
       this.$refs.loginForm.validate(async valid => {
         if (valid) {
@@ -160,6 +161,7 @@ export default {
       })
 
     },
+    // 窗口关闭触发的事件
     closeBox(){
       this.$emit("loginSuccess")
     }
@@ -182,7 +184,7 @@ export default {
     top: 50%;
     left: 50%;
     width: 300px;
-    height: 300px;
+    height: auto;
     padding: 10px 30px;
     transform: translate(-50%, -50%);
     background-color: #fff;

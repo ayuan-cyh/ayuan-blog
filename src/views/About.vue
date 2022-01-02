@@ -3,13 +3,11 @@
 <!--  about me-->
   <article>
     <h2>ABOUT ME</h2>
-    <p>也没有什么好形容的自己</p>
-    <p>一个初级的容易脱发的程序猿</p>
-    <p>希望以后还能拥有浓密的头发,假发也行</p>
+    <p>也没有什么好形容的自己,一个热爱互联网行业的普通人,还有着许许多多不足的地方,但是也在慢慢的努力😄,什么东西都会点,喜欢琢磨一些稀奇古怪的东西,喜欢看动漫和日剧,未来发展方向是全栈,因为前后端其实都是有兴趣的,目前的后端也可以应付些小型的项目,前端主要方向还是Vue</p>
   </article>
 <!--  about site-->
   <article>
-    <h2>About SITE</h2>
+    <h2>About DEMO</h2>
     <p><code>前  端：</code><span class="code">Vue + Element</span></p>
     <p><code>后  端：</code><span class="code">Node + Express + Mongodb</span></p>
     <p class="border"><code>服务器：</code><a target="_blank" href="https://www.aliyun.com/1111/new?userCode=xqfx5ty6">阿里云ECS</a></p>
@@ -17,14 +15,16 @@
   </article>
   <!--ABOUT COPYRIGHT-->
   <article>
-    <h2>ABOUT COPYRIGHT</h2>
-    <p>在注明出处的前提下，本站文章允许非商业用途的转载。</p>
+    <h2>ABOUT Web SITE</h2>
+    <p>由于服务器性能和网络带宽较小,所以网站进行了CDN优化和后端GZIP压缩,因为这个项目搁置时间有点长,没有找到旧版本合适免费的加速CDN,使用了其他版本的CDN加速可能存在部分不兼容,后续在测试过程会慢慢改进.后台管理员地址为/adminc
+      账号:root 密码:adminc
+    </p>
   </article>
 
   <!--OTHER-->
   <article>
     <h2>OTHER</h2>
-    <p>我是一名热爱互联网的青年，也是一名即将毕业向往未来的学生，可以通过 <a href="/#contact">contact me</a> 联系我。或者可以在👈左侧边栏找到我的联系方式哦。</p>
+    <p>我是一名热爱互联网的青年，也是一名即将毕业向往未来的学生，可以通过 <a href="/#contact">contact me</a> 联系我。或者可以在👈左侧边栏找到我的联系方式哦。,可以直接通过下方的Contact发送邮箱给我😀</p>
   </article>
 </div>
 </template>

@@ -1,38 +1,13 @@
 <template>
-<div id="UserPhoto">
-  <el-popover
-      placement="bottom-end"
-      trigger="hover"
-      :width="160"
-  >
-    <template #reference>
-      <div
-          class="img"
-          :style="{
+  <div id="UserPhoto" @click="goUserC">
+    <div
+        class="img"
+        :style="{
             backgroundImage: `url(${baseURL}${userInfo.photo})`
           }"
-          :title="userInfo.user"
-      ></div>
-    </template>
-    <!--hover之后，显示的内容-->
-    <div class="btn">
-      <el-button
-          type="primary"
-          size="mini"
-          @click="userUpdate"
-      >修改资料
-      </el-button>
-      <el-button
-          class="second"
-          type="danger"
-          size="mini"
-          @click="logout"
-      >退出登录
-      </el-button>
-    </div>
-
-  </el-popover>
-</div>
+        :title="userInfo.user"
+    ></div>
+  </div>
 </template>
 
 <script>
@@ -41,22 +16,13 @@ import {mapMutations} from "vuex"
 
 export default {
   name: "UserPhoto",
-  computed:{
+  computed: {
     ...mapState(['userInfo']),
-  },methods:{
-    ...mapMutations(['updateUserInfo']),
-    async logout(){
-      await this.$axios({
-        method:"post",
-        url:"/login/logout"
-      })
-      this.$message.success("退出登录成功")
-      // 清除vuex中的数据
-      this.updateUserInfo({})
-    },
-    //修改按钮点击触发的点击事件
-    userUpdate(){
-      this.$router.push("/userC")
+  },
+  methods: {
+    // 跳转到用户中心的事件
+    goUserC(){
+      this.$router.push({name:'Userc'})
     }
 
   }
@@ -64,7 +30,22 @@ export default {
 </script>
 
 <style scoped>
-.img{
+.elBox {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: none;
+}
+
+.btn {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: none;
+
+}
+
+.img {
   width: 40px;
   height: 40px;
   background-size: cover;
@@ -72,6 +53,7 @@ export default {
   border-radius: 50%;
   margin-top: 5px;
 }
+
 .second {
   margin-left: 0 !important;
 }

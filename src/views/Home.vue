@@ -232,23 +232,24 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(async valid => {
         if (valid) {
+          //通过ajax 向后端发送数据
           let {data} =await this.$axios({
             method: "post",
             url: "email",
             data: this.contactForm
           })
           if (data.code) {
-            this.$message.error(data.msg)
+            return  this.$message.error(data.msg)
           }
           this.$message.success(data.msg)
           this.$refs.contactForm.resetFields()
-
-          //通过ajax 向后端发送数据
         } else {
           return false;
         }
       });
     }
+  },
+  mounted() {
   }
 }
 </script>
