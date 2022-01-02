@@ -8,6 +8,7 @@
               :model="userForm"
               :rules="rules"
               ref="userForm"
+              label-position="left"
               label-width="100px"
           >
             <el-form-item label="原用户名：">
@@ -23,12 +24,13 @@
         </el-tab-pane>
         <el-tab-pane label="修改密码" name="second">
           <el-form
+              label-position="left"
               :model="passForm"
               :rules="rules"
               ref="passForm"
               label-width="100px"
           >
-            <el-form-item label="原密码：">
+            <el-form-item label="原密码">
               <el-input type="password" v-model="passForm.oldPass"></el-input>
             </el-form-item>
             <el-form-item label="新的密码：" prop="pass">

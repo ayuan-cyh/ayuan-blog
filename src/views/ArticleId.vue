@@ -36,6 +36,9 @@ export default {
 </script>
 
 <style scoped>
+#article-box{
+  min-width: 60vw;
+}
 
 </style>
 

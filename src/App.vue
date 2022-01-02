@@ -21,7 +21,6 @@
 import AppNav from "@/components/AppNav";
 import AppSide from "@/components/AppSide";
 import {mapMutations}from "vuex"
-import router from "@/router";
 
 export default {
   name: 'App',

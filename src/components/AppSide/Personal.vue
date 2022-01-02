@@ -10,28 +10,12 @@
       <div class="contact">
         <a href="https://github.com/ayuan-cyh" target="_blank" class="iconfont icon-github"></a>
         <a class="iconfont icon-twitter" title="不经常使用"></a>
-        <a href="https://weibo.com/u/5293353864" target="_blank" class="iconfont icon-tubiaozhizuo-"></a>
-        <el-popover
-        placement="bottom"
-        :width="150"
-        trigger="click"
-        >
-          <template #reference>
-            <a class="iconfont icon-weixin"></a>
-          </template>
-          <img
-              class="weixin"
-              src="../../assets/img/personal/微信名片.jpg"
-              width="150"
-              height="150"
-              alt="微信二维码"
-          >
-        </el-popover>
+        <a  title="不经常使用" class="iconfont icon-tubiaozhizuo-"></a>
         <a href="http://wpa.qq.com/msgrd?v=3&uin=1654910676&site=qq&menu=yes" target="_blank"
            class="iconfont icon-QQ"></a>
       </div>
       <div class="bottom">
-        <a href="" target="_blank" title="即将提供">DOWNLOAD CV</a>
+        <a href="https://github.com/ayuan-cyh/ayuan-blog" target="blank">DOWNLOAD CV</a>
       </div>
     </div>
   </div>

@@ -8,6 +8,7 @@
               :rules="rules"
               ref="loginForm"
               label-width="70px"
+              label-position="left"
           >
             <el-form-item label="用户名" prop="user">
               <el-input v-model="loginForm.user"></el-input>
@@ -26,6 +27,7 @@
               :rules="rules"
               ref="regForm"
               label-width="70px"
+              label-position="left"
           >
             <el-form-item label="用户名" prop="user">
               <el-input v-model="regForm.user"></el-input>
